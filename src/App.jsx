@@ -23,6 +23,61 @@ const MainContainer = styled.main`
   min-height: 100vh;
 `;  
 
+//const GET_ALL_MOVIES_BY_PERSON_ID = `https://localhost:7147/api/PersonMovie/PersonId?personId=${personId}`;
+//const GET_ALL_MOVIES_BY_ID = `https://localhost:7147/api/movie/${movieId}`;
+
+
+
+
+function LikedGenre() {
+  const [data, setData] = useState(false);
+  //Object destructuring:
+  let { personId } = useParams();
+
+  const GET_LIKED_GENRES_BY_PERSON_ID = `https://localhost:7147/api/LikedGenre/personId?personId=${personId}`;
+
+  
+  useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios( GET_LIKED_GENRES_BY_PERSON_ID );
+            console.log(result);
+            setData(result.data);
+        };
+
+        fetchData();
+    }, []);
+  
+  return (
+    <>
+    <h1>Liked Genres</h1>
+    {data.map(LiGen => ( <h4>{LiGen.genreId}</h4> ))}
+    </>
+  );
+}
+
+
+// function Genre() {
+//   const [data, setData] = useState(false);
+//   //Object destructuring:
+//   //let { genreId } = useParams();
+
+//   const GET_ALL_GENRES = "https://localhost:7147/api/Genre";
+
+  
+//   useEffect(() => {
+//         const fetchData = async () => {
+//             const result = await axios( GET_ALL_GENRES );
+//             console.log(result);
+//             setData(result.data);
+//         };
+
+//         fetchData();
+//     }, []);
+  
+//   return (
+//     <h1>Liked Genres</h1>
+//   );
+// }
 
 
 
@@ -37,6 +92,8 @@ function Person() {
   useEffect(() => {
         const fetchData = async () => {
             const result = await axios( GET_PERSON_BY_ID );
+            //console.log(result);
+
             console.log(result);
             setData(result.data);
         };
@@ -44,7 +101,7 @@ function Person() {
         fetchData();
     }, []);
   
-  return data ? <h1>{data.name}</h1> : <h3>Loading ...</h3>;
+   return data ? <h1>{data.name}</h1> : <h3>Loading ...</h3>;
 }
 
 

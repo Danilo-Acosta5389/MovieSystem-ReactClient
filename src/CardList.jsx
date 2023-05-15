@@ -18,24 +18,7 @@ const CardListContainer = styled.div`
 const GET_ALL_PERSON = "https://localhost:7147/api/Person";
 
 
-    //Test data
-//     const person = [
-//   {
-//     "name": "Danilo",
-//     "email": "daac@chas.com",
-//     "age": 30
-//   },
-//   {
-//     "name": "Pablo",
-//     "email": "pwl@chas.com",
-//     "age": 27
-//   },
-//   {
-//     "name": "Mehmet",
-//     "email": "memo@chas.com",
-//     "age": 31
-//   }
-// ];
+
 
 
 
@@ -65,6 +48,27 @@ function CardList(props) {
 }
 
 export default CardList;
+
+
+
+    //Test data
+//     const person = [
+//   {
+//     "name": "Danilo",
+//     "email": "daac@chas.com",
+//     "age": 30
+//   },
+//   {
+//     "name": "Pablo",
+//     "email": "pwl@chas.com",
+//     "age": 27
+//   },
+//   {
+//     "name": "Mehmet",
+//     "email": "memo@chas.com",
+//     "age": 31
+//   }
+// ];
 
 
 // [
