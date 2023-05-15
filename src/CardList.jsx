@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 import Card from './Card';
 import {API_KEY} from './hush';
@@ -40,7 +41,7 @@ const GET_ALL_PERSON = "https://localhost:7147/api/Person";
 
 function CardList(props) {
 
-    const [data, setData] = useState({data: []});
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -55,7 +56,10 @@ function CardList(props) {
 
     return(
         <CardListContainer>
-            {data.data.map(person => <Card name={person.name}/> )}
+            {data.map(person => (
+            <Link to={`/person/${person.id}`} key={person.id}>
+                <Card name={person.name}/>
+            </Link> ))}
         </CardListContainer>
     );
 }
