@@ -4,7 +4,6 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 import Card from './Card';
-import {API_KEY} from './hush';
 
 
 const CardListContainer = styled.div`
@@ -15,10 +14,7 @@ const CardListContainer = styled.div`
     align-items: center;
 `;
 
-const GET_ALL_PERSON = "https://localhost:7147/api/Person";
-
-
-
+const GET_ALL_PERSONS = "https://localhost:7147/api/Person";
 
 
 
@@ -28,7 +24,7 @@ function CardList(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios( GET_ALL_PERSON );
+            const result = await axios( GET_ALL_PERSONS );
 
             console.log(result);
             setData(result.data);
