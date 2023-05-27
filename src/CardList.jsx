@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import Card from './Card';
 
 
+import * as URL from './ApiCalls';
+
 const CardListContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -21,7 +23,7 @@ function CardList() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios( GET_ALL_PERSONS );
+            const result = await axios( URL.GET_ALL_PERSONS );
 
             console.log(result);
             setData(result.data);
