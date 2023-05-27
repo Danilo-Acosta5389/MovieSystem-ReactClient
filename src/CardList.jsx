@@ -14,11 +14,8 @@ const CardListContainer = styled.div`
     align-items: center;
 `;
 
-const GET_ALL_PERSONS = "https://localhost:7147/api/Person";
 
-
-
-function CardList(props) {
+function CardList() {
 
     const [data, setData] = useState([]);
 
