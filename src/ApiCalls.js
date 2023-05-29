@@ -2,12 +2,13 @@
   
 
   export const GET_ALL_PERSONS = "https://localhost:7147/api/Person";
-  export const GetPersonById = (personId) => `https://localhost:7147/api/Person/${personId}`;
+  export const GetPersonById = (person_id) => `https://localhost:7147/api/Person/${person_id}`;
 
 
-  export const GetAllMoviesByPersonId = (personId) => `https://localhost:7147/api/PersonMovie/PersonId?personId=${personId}`;
+  export const GetAllMoviesByperson_id = (person_id) => `https://localhost:7147/api/PersonMovie/personId?personId=${person_id}`;
   export const GET_ALL_MOVIES = "https://localhost:7147/api/movie/";
 
-  export const GetLikedGenreByPersonId = (personId) => `https://localhost:7147/api/LikedGenre/personId?personId=${personId}`;
+  export const GetLikedGenreByperson_id = (person_id) => `https://localhost:7147/api/LikedGenre/personId?personId=${person_id}`;
   export const GET_ALL_GENRES = "https://localhost:7147/api/Genre";
-  
+
+  export const SET_LIKED_GENRE = "https://localhost:7147/api/LikedGenre";

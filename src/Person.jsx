@@ -15,12 +15,12 @@ import * as URL from './ApiCalls';
 function Person() {
   const [data, setData] = useState(false);
   //Object destructuring:
-  let { personId } = useParams();
+  let { person_id } = useParams();
   
 
   useEffect(() => {
         const fetchData = async () => {
-            const result = await axios( URL.GetPersonById(personId) );
+            const result = await axios( URL.GetPersonById(person_id) );
             //console.log(result);
 
             setData(result.data);

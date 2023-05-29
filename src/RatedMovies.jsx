@@ -12,11 +12,11 @@ function RatedMovies() {
   const [personMovie, setPersonMovie] = useState([]);
   const [movies, setAllMovie] = useState([]);
 
-  let { personId } = useParams();
+  let { person_id } = useParams();
 
   useEffect(() => {
         const fetchData = async () => {
-            const result = await axios( URL.GetAllMoviesByPersonId(personId) );
+            const result = await axios( URL.GetAllMoviesByperson_id(person_id) );
             console.log(result);
             setPersonMovie(result.data);
         };

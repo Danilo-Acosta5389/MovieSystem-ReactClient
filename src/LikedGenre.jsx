@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 import * as URL from './ApiCalls';
+import AddLikedGenre from './AddLikedGenreForm';
+
 
 
 function LikedGenre() {
@@ -11,11 +13,11 @@ function LikedGenre() {
 
   
   //Object destructuring:
-  let { personId } = useParams();
+  let { person_id } = useParams();
   
   useEffect(() => {
         const fetchData = async () => {
-            const result = await axios( URL.GetLikedGenreByPersonId(personId) );
+            const result = await axios( URL.GetLikedGenreByperson_id(person_id) );
             console.log(result);
             setData(result.data);
         };
@@ -46,7 +48,7 @@ function LikedGenre() {
 
         if (data[i].genreId === genres[j].id) {
 
-          //console.log(data[i].genreId +" is "+ genres[j].name + " on personId " + personId);
+          //console.log(data[i].genreId +" is "+ genres[j].name + " on person_id " + person_id);
           results.push({
             genre_id: data[i].genreId,
             genre_name: genres[j].name,
@@ -63,6 +65,7 @@ function LikedGenre() {
   return (
     <>
     <h1>Liked Genres</h1>
+    <AddLikedGenre />
     { results.map(LiGen =>  <h4>{LiGen.genre_name}</h4>) } 
     </>
   );

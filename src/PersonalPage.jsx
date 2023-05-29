@@ -26,7 +26,7 @@ function PersonalPage() {
     <Link to="/">Home</Link>
     <h1>Personal page</h1>
     <Switch>
-      <Route path={`${match.path}/:personId`}>
+      <Route path={`${match.path}/:person_id`}>
         <Person />
         <LikedGenre />
         <RatedMovies />
