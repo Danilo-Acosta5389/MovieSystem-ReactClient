@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 import * as URL from './ApiCalls';
+import * as help from './Helper';
 
 function AddLikedGenre() {
 
@@ -23,7 +24,7 @@ function AddLikedGenre() {
 
 
     function handleGenreChange(evt) {
-        console.log(evt.target.value);
+        //console.log(evt.target.value);
         genre_Id = evt.target.value;
         //setGenre(evt.target.value)
     }
@@ -31,7 +32,7 @@ function AddLikedGenre() {
 
 
     function HandleSubmit(evt) {
-        console.log(genre_Id);
+        //console.log(genre_Id);
 
         evt.preventDefault();
 
@@ -43,6 +44,7 @@ function AddLikedGenre() {
             console.log(response.status, response.data);
         });
 
+        help.ReloadPage(); // Reloads page
 
     }
 
@@ -59,7 +61,7 @@ function AddLikedGenre() {
             </select>
             
             </label>
-            <button type="submit">SEND</button>
+            <button type="submit">Submit</button>
         </form>
         </>
     )

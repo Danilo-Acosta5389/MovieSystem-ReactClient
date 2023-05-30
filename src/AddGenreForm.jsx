@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import * as URL from './ApiCalls';
+import * as help from './Helper';
 
 
 function AddGenreForm() {
@@ -34,13 +35,16 @@ function AddGenreForm() {
         axios.post(URL.GET_ALL_GENRES, newGenre).then((response) => {
             console.log(response.status, response.data);
         });
+
+        help.ReloadPage(); // Reloads page
+
     }
 
     return(
         <>
         
         <form onSubmit={HandleSubmit}>
-            <h4>Add genre to system</h4>
+            <h4>Add new genre to system</h4>
             Genre name: <input
                 type="text"
                 value={genre}
@@ -56,7 +60,7 @@ function AddGenreForm() {
 
             {/* TODO: Reset fields on submit */}
 
-            <button type="submit">SEND</button>  
+            <button type="submit">Submit</button>  
             {/* <button type="reset">RESET</button> */}
         </form>
         </>

@@ -1,13 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import * as URL from './ApiCalls';
 
@@ -15,9 +8,9 @@ import * as URL from './ApiCalls';
 function Person() {
   const [data, setData] = useState(false);
   //Object destructuring:
-  let { person_id } = useParams();
-  
+  let { person_id } = useParams(); 
 
+  //API call to get person by Id
   useEffect(() => {
         const fetchData = async () => {
             const result = await axios( URL.GetPersonById(person_id) );

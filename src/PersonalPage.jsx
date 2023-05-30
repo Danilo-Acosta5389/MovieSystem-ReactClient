@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useRouteMatch,
-  useParams
+  useRouteMatch
 } from "react-router-dom";
 
 
@@ -15,7 +13,7 @@ import RatedMovies from './RatedMovies';
 import Person from './Person';
 
 
-
+//The PersonalPage component contains users private info
 function PersonalPage() {
 
   let match = useRouteMatch();
@@ -30,7 +28,6 @@ function PersonalPage() {
         <Person />
         <LikedGenre />
         <RatedMovies />
-        {/* <Genre /> */}
       </Route>
       <Route path={`${match.path}`}>
         <h3>Go back and click a person card please.</h3>

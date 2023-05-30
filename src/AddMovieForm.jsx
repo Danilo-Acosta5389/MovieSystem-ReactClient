@@ -2,13 +2,17 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import * as URL from './ApiCalls';
+import * as help from './Helper';
 
 function AddMovieForm() {
 
     const [_title, setTitle] = useState('');
-    const [_year, setYear] = useState(0);
+    //const [_year, setYear] = useState(0);
     const [_genreId, setGenre] = useState([]);
+    
+    let _year;
     let genre_id;
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,14 +28,15 @@ function AddMovieForm() {
 
 
     function handleTitle(evt) {
-        console.log(evt.target.value);
+        //console.log(evt.target.value);
         setTitle(evt.target.value)
     }
 
 
     function handleYear(evt) {
         //console.log(evt.target.value);
-        setYear(evt.target.value)
+        //setYear(evt.target.value)
+        _year = evt.target.value;
     }
 
     function handleGenre(evt) {
@@ -54,20 +59,22 @@ function AddMovieForm() {
         axios.post(URL.GET_ALL_MOVIES, newMovie).then((response) => {
             console.log(response.status, response.data);
         });
+
+        help.ReloadPage(); // Reloads page
     }
 
     return(
         <>
         
         <form onSubmit={HandleSubmit}>
-            <h4>Add movie to system</h4>
+            <h4>Add new movie to system</h4>
             Movie title: <input
                 type="text"
                 value={_title}
                 onChange={handleTitle}
             />
             <br></br>
-            Year: <input
+            Year (ex: 1992): <input
                 type="number"
                 value={_year}
                 onChange={handleYear}
@@ -83,8 +90,8 @@ function AddMovieForm() {
             </label>
 
             {/* TODO: Reset fields on submit */}
-
-            <button type="submit">SEND</button>  
+            <br></br>
+            <button type="submit">Submit</button>  
             {/* <button type="reset">RESET</button> */}
         </form>
         </>

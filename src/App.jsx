@@ -4,14 +4,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
+} from "react-router-dom";   
 
 import CardList from './CardList';
 import PersonalPage from './PersonalPage';
 import AddGenreForm from './AddGenreForm';
 import AddMovieForm from './AddMovieForm';
+import AddPersonForm from './AddPersonForm';
 
-
+//Creating and styling a container
 const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
@@ -23,7 +24,7 @@ const MainContainer = styled.main`
 
 
 
-
+//Using React Router to redirect "pages" depending on URL
 function App() {
 
   return (
@@ -38,6 +39,7 @@ function App() {
       <CardList />
       <AddGenreForm />
       <AddMovieForm />
+      <AddPersonForm />
     </Route>
     </Switch>
     </MainContainer>

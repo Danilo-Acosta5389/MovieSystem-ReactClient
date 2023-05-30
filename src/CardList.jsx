@@ -4,9 +4,9 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 import Card from './Card';
-
-
 import * as URL from './ApiCalls';
+
+
 
 const CardListContainer = styled.div`
     display: flex;
@@ -17,16 +17,19 @@ const CardListContainer = styled.div`
 `;
 
 
+//Function will make API call to get all users names displayed
+//The names will be stored in a clickable card
+//The persons id will be added to URL, this will later enable us to use person_id as parameter in other functions
 function CardList() {
 
-    const [data, setData] = useState([]);
+    const [person, setPerson] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios( URL.GET_ALL_PERSONS );
 
             console.log(result);
-            setData(result.data);
+            setPerson(result.data);
         };
 
         fetchData();
@@ -34,57 +37,12 @@ function CardList() {
 
     return(
         <CardListContainer>
-            {data.map(person => (
-            <Link to={`/person/${person.id}`} key={person.id}>
-                <Card name={person.name}/>
+            {person.map(p => (
+            <Link to={`/person/${p.id}`} key={p.id}>
+                <Card name={p.name}/>
             </Link> ))}
         </CardListContainer>
     );
 }
 
 export default CardList;
-
-
-
-    //Test data
-//     const person = [
-//   {
-//     "name": "Danilo",
-//     "email": "daac@chas.com",
-//     "age": 30
-//   },
-//   {
-//     "name": "Pablo",
-//     "email": "pwl@chas.com",
-//     "age": 27
-//   },
-//   {
-//     "name": "Mehmet",
-//     "email": "memo@chas.com",
-//     "age": 31
-//   }
-// ];
-
-
-// [
-//     {
-//         "id": 1,
-//         "name": "Danilo",
-//         "e_Mail": "daaco92@chas.se"
-//     },
-//     {
-//         "id": 2,
-//         "name": "Pablo",
-//         "e_Mail": "pablo.e@chas.se"
-//     },
-//     {
-//         "id": 3,
-//         "name": "Mehmet",
-//         "e_Mail": "memo.b@chas.se"
-//     },
-//     {
-//         "id": 4,
-//         "name": "Dania",
-//         "e_Mail": "danjaa@chas.se"
-//     }
-// ]

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
+//Container for all users name that will appear on screen
 const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -17,10 +17,8 @@ const CardContainer = styled.div`
 `;
 
 
-// Take prop as argument 
+// Component will take argument when used 
 function Card(props) {
-
-    //console.log(props);
 
     return(
         <CardContainer>

@@ -3,17 +3,21 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 import * as URL from './ApiCalls';
+import * as help from './Helper';
 
 function RateMovieForm() {
 
     const [movie, setMovie] = useState([]);
-    const [rate, setRate] = useState([1,2,3,4,5,6,7,8,9,10]);
-    const [_link, setLink] = useState("");
+    const rate = [1,2,3,4,5,6,7,8,9,10];
+    
     let { person_id } = useParams();
 
+    //Empty variables for storing results
     let movie_id;
     let _rate;
+    let _link;
 
+    //API call to get all movies in db, this will be used when listing and picking movie in dropdown bar
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios( URL.GET_ALL_MOVIES );
@@ -26,12 +30,13 @@ function RateMovieForm() {
 
 
 
+    //Event handlers for when input has occured
 
     function handleMovie(evt) {
         //console.log(evt.target.value);
         //setMovie(evt.target.value)
         movie_id = evt.target.value;
-        console.log(movie_id);
+        //console.log(movie.id);
     }
 
 
@@ -39,30 +44,35 @@ function RateMovieForm() {
         //console.log(evt.target.value);
         //setRate(evt.target.value)
         _rate = evt.target.value;
-        console.log(_rate);
+        //console.log(_rate);
     }
 
     function handleLink(evt) {
         //console.log(evt.target.value);
-        setLink(evt.target.value)
+        //setLink(evt.target.value)
+        _link = evt.target.value;
         console.log(_link);
     }
 
-
+    //Event handler for when pressing Submit button
     function HandleSubmit(evt) {
         console.log(evt);
 
         evt.preventDefault();
 
+        //Creating a JSON styled array and using it with API POST method
         const newMovieRating = {
             personId: person_id,
             movieId: movie_id,
             rating: _rate,
-            link: _link.toString
+            link: _link
         };
-        axios.post(URL.SET_PERSON_MOVIE2, newMovieRating).then((response) => {
+        axios.post(URL.SET_PERSON_MOVIE, newMovieRating).then((response) => {
             console.log(response.status, response.data);
         });
+
+        //This will reload the "page"
+        help.ReloadPage(); // Reloads page
     }
 
     return(
@@ -89,16 +99,16 @@ function RateMovieForm() {
             </select>
             </label>/10
             <br></br>
-            Link: 
+            Link to this movie: 
             <input
-                type="text"
+                type="url"
                 value={_link}
                 onChange={handleLink}
             />
 
             {/* TODO: Reset fields on submit */}
             
-            <button type="submit">SEND</button>  
+            <button type="submit">Submit</button>  
             {/* <button type="reset">RESET</button> */}
         </form>
         </>
