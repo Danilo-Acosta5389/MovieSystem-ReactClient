@@ -17,7 +17,6 @@ import Person from './Person';
 function PersonalPage() {
 
   let match = useRouteMatch();
-  //console.log(match);
 
   return (
     <>
