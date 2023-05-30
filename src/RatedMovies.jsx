@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 
 import * as URL from './ApiCalls';
+import RateMovieForm from './RateMovieForm';
 
 
 
@@ -59,6 +60,7 @@ function RatedMovies() {
   return(
     <>
     <h1>Rated Movies</h1>
+    <RateMovieForm />
     { results.map(movie => ( 
     <> 
     <h4>{movie.movie_title}</h4>
